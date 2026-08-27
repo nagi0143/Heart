@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Nested Hearts</title>
+    <style>
+        body {
+            background-color: #f7c5d4; /* Background pink shade */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Common Heart Shape CSS */
+        .heart {
+            position: absolute;
+            background-color: var(--bg-color);
+            transform: rotate(-45deg) scale(0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulseAnimation 2s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background-color: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: calc(-1 * var(--size) / 2);
+            left: 0;
+        }
+
+        .heart::after {
+            left: calc(var(--size) / 2);
+            top: 0;
+        }
+
+        /* Sizing, Colors, and Staggered Animation Delays */
+        .heart-1 {
+            --size: 240px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e06d87; /* Outer Dark Pink */
+            z-index: 1;
+            animation-delay: 0s;
+        }
+
+        .heart-2 {
+            --size: 180px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #f3a6be; /* Medium Light Pink */
+            z-index: 2;
+            animation-delay: 0.3s;
+        }
+
+        .heart-3 {
+            --size: 120px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e8ecf1; /* Off-white/Light Grey shade */
+            z-index: 3;
+            animation-delay: 0.6s;
+        }
+
+        .heart-4 {
+            --size: 70px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e06d87; /* Inner Dark Pink */
+            z-index: 4;
+            animation-delay: 0.9s;
+        }
+
+        .heart-5 {
+            --size: 30px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #f5b7cb; /* Small Inner Light Pink */
+            z-index: 5;
+            animation-delay: 1.2s;
+        }
+
+        /* Continuous expansion animation */
+        @keyframes pulseAnimation {
+            0% {
+                transform: rotate(-45deg) scale(0.6);
+                opacity: 0.3;
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(-45deg) scale(0.6);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart heart-4"></div>
+        <div class="heart heart-5"></div>
+    </div>
+
+</body>
+</html>

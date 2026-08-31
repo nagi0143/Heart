@@ -14,7 +14,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.username === username) {
             // Credentials are correct, show the profile picture and ask for confirmation
@@ -26,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('An error occurred while verifying the credentials.');
+        alert('An error occurred while verifying the credentials. Please try again later.');
     });
 });
 
